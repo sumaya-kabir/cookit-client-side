@@ -4,13 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
     return (
-        <Navbar className='px-3' bg="light" expand="lg">
+        <Navbar sticky="top" className='px-3' bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand className='text-success text-center border border-success border-2 px-2'><h2>Cook It</h2></Navbar.Brand>
+        <Navbar.Brand className='text-success text-center border border-success border-2 px-2 rounded'><h2>Cook It</h2></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
         <Form className="d-flex px-3">
@@ -30,11 +31,12 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link >Home</Nav.Link>
-            <Nav.Link >Courses</Nav.Link>
-            <Nav.Link >Blog</Nav.Link>
-            <Nav.Link >Sign Up</Nav.Link>
-            <Button className='btn-success'>Login</Button>
+            <Link className='p-2 text-decoration-none text-success fw-bold ' to='/'>Home</Link>
+            <Link className='p-2 text-decoration-none text-dark ' to='/courses'>Courses</Link>
+            <Link className='p-2 text-decoration-none text-dark ' to='/blog'>Blog</Link>
+            <Link className='p-2 text-decoration-none text-dark ' to='/faq'>FAQ</Link>
+            <Link className='p-2 text-decoration-none text-dark ' to='/signup'>Sign Up</Link>
+            <Link className='px-2 text-decoration-none text-light' to='/login'><Button className='btn-success'>Login</Button></Link>
             
           </Nav>
           <Navbar.Text>
