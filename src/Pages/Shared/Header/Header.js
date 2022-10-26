@@ -1,13 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
     return (
         <Navbar sticky="top" className='px-3' bg="light" expand="lg">
       <Container fluid>
@@ -40,7 +43,7 @@ const Header = () => {
             
           </Nav>
           <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
+            Signed in as: <a href="#login">{user.displayName}</a>
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>
