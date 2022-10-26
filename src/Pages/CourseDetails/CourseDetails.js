@@ -2,25 +2,76 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Col, Container, Row } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { FaBullhorn, FaBusinessTime, FaChartBar, FaDollarSign, FaUser, } from "react-icons/fa";
+
 
 const CourseDetails = () => {
     const details = useLoaderData();
-    const { title, picture, description, ratings, level, instructor, price, time } = details;
+    const { title, picture, description, total_students, lectures,ratings, level, instructor, price, time } = details;
     return (
-        <div>
-            <Card style={{ width: '50rem' }}>
-                <Card.Title><h2>{title}</h2></Card.Title>
-                <Card.Img variant="top" src={picture} />
-                <Card.Body>
-                    <Card.Text>
-                        {description}
-                        <h4>Price: {price}</h4>
-                        <h4>Duration: {time}</h4>
-                        <h4>Ratings: {ratings}</h4>
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
+        <div className='m-5'>
+            <Container>
+                <Row>
+                    <Col sm={9}>
+                        <h1>{title}</h1>
+                        <div>
+                            <div className='d-flex w-25 my-5'>
+                                <img style={{ height: 40, width: 40 }} className='me-2 rounded-circle' src={instructor.img} alt="" />
+                                <div>
+                                    <small>Instructor</small>
+                                    <p>{instructor.name}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <Card style={{ width: '50rem' }}>
+                                <Card.Img variant="top" src={picture} />
+                                <Card.Body>
+                                    <Card.Text>
+                                        {description}
+
+                                    </Card.Text>
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </Col>
+
+                    {/* Side bar of details page */}
+                    <Col sm={3}>
+                        <Button className='btn-lg bg-success text-light w-100'>Get Premium Access</Button>
+                        <div className='mt-5'>
+                            <ListGroup>
+                                <ListGroup.Item className='d-flex justify-content-between'>
+                                    <p>Price: <strong>{price}</strong></p>
+                                    <FaDollarSign className='text-success fs-5'></FaDollarSign>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='d-flex justify-content-between'>
+                                    <p>Enrolled: <strong>{total_students} students</strong></p>
+                                    <FaUser className='text-success fs-5'></FaUser>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='d-flex justify-content-between'>
+                                    <p>Duration: <strong>{time}</strong></p>
+                                    <FaBusinessTime className='text-success fs-5'></FaBusinessTime>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='d-flex justify-content-between'>
+                                    <p>Lectures: <strong>{lectures}</strong></p>
+                                    <FaBullhorn className='text-success fs-5'></FaBullhorn>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='d-flex justify-content-between'>
+                                    <p>Level: <strong>{level}</strong></p>
+                                    <FaChartBar className='text-success fs-5'></FaChartBar>
+                                </ListGroup.Item>
+                                
+                            </ListGroup>
+                        </div>
+
+                    </Col>
+                </Row>
+
+            </Container>
         </div>
     );
 };
