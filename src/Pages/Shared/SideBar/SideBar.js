@@ -5,7 +5,7 @@ const SideBar = ({course}) => {
     return (
         <div className='d-flex mb-3'>
             <img className='w-25 me-2' src={course.picture} alt="" />
-            <p><Link className='text-decoration-none text-dark'>{course.title}</Link></p>
+            <p><Link to={`${course.id}`} className='text-decoration-none text-dark'>{course.title}</Link></p>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
+import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Faq from "../../Pages/FAQ/Faq";
 import Home from "../../Pages/Home/Home";
@@ -20,6 +21,11 @@ export const routes = createBrowserRouter([
                 path: '/courses',
                 element: <Courses></Courses>,
                 loader: () => fetch("https://cookit-server.vercel.app/courses"),
+            },
+            {
+                path: '/courses/:id',
+                element: <CourseDetails></CourseDetails>,
+                loader: ({params}) => fetch(`https://cookit-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/blog',
