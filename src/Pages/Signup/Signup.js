@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, verifyEmail} = useContext(AuthContext);
     const [error, setError] = useState('')
 
     const handleSubmit = (event) => {
@@ -16,7 +17,10 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
-        console.log(email, password, name);
+        const photoURL = form.photo.value;
+        console.log(name, photoURL)
+
+        
         
         createUser(email, password)
         .then(result => {
@@ -24,10 +28,19 @@ const Signup = () => {
             console.log(user);
             setError('');
             form.reset();
+            handleEmailVerification();
+            toast.success('Please verify your email address');
+            
         })
         .catch(error => {
             setError(error.message)
         })
+    }
+
+    const handleEmailVerification = () => {
+        verifyEmail()
+        .then(() => {})
+        .catch(error => console.log(error))
     }
     
     
@@ -35,7 +48,7 @@ const Signup = () => {
         <div className='w-50 mx-auto my-5 border rounded p-5'>
             <h3 className='text-center pb-3'>Sign Up</h3>
             <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter your Full Name" name="name" required/>
                 </Form.Group>

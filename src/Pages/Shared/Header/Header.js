@@ -67,9 +67,12 @@ const Header = () => {
           {
             user?.uid 
             ?
-            <Navbar.Text>
-            Signed in as: <a href="#login">{user?.email}</a>
-          </Navbar.Text>
+            <>
+              <Navbar.Text>
+                Signed in as: <a href="#login">{user?.displayName}</a>
+                <img src={user?.photoURL} alt="" />
+              </Navbar.Text>
+            </>
           : 
           <FaUser></FaUser>
           }
