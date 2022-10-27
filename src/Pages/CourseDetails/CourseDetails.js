@@ -9,7 +9,7 @@ import { FaBullhorn, FaBusinessTime, FaChartBar, FaDollarSign, FaEye, FaStar, Fa
 
 const CourseDetails = () => {
     const details = useLoaderData();
-    const { title, picture, description, total_students, lectures,ratings, total_views, level, instructor, price, time } = details;
+    const { id, title, picture, description, total_students, lectures,ratings, total_views, level, instructor, price, time } = details;
     return (
         <div className='m-5'>
             <Container>
@@ -41,7 +41,7 @@ const CourseDetails = () => {
                                         {description}
 
                                     </Card.Text>
-                                    <Link className='text-decoration-none' to='/checkout'>
+                                    <Link className='text-decoration-none' to={`/checkout/${id}`}>
                                         <Button variant="success">Get Premium Access</Button>
                                     </Link>
                                 </Card.Body>
@@ -51,7 +51,7 @@ const CourseDetails = () => {
 
                     {/* Side bar of details page */}
                     <Col sm={3}>
-                    <Link className='text-decoration-none' to='/checkout'>
+                    <Link className='text-decoration-none' to={`/checkout/${id}`}>
                         <Button className='btn-lg bg-success text-light w-100'>Enroll Course</Button>
                     </Link>
                         <div className='mt-5'>

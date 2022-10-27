@@ -31,8 +31,9 @@ export const routes = createBrowserRouter([
                 loader: ({params}) => fetch(`https://cookit-server.vercel.app/courses/${params.id}`)
             },
             {
-                path: '/checkout',
-                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+                path: '/checkout/:id',
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+                loader: ({params}) => fetch(`https://cookit-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/blog',
