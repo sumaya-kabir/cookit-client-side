@@ -6,13 +6,35 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {signIn, setLoading} = useContext(AuthContext);
+    const {signIn, setLoading, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    const googleProvider  = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -66,8 +88,8 @@ const Login = () => {
 
                 <div className='text-center mt-2'>
                 <p>Or</p>
-                <Button className='w-100 mb-2' variant="outline-primary">Google Login</Button>
-                <Button className='w-100' variant="outline-secondary">GitHub Login</Button>
+                <Button onClick={handleGoogleSignIn} className='w-100 mb-2' variant="outline-primary">Google Login</Button>
+                <Button onClick={handleGithubSignIn} className='w-100' variant="outline-secondary">GitHub Login</Button>
                 </div>
             </Form>
             <p className='mt-3 text-center'>Not have an account? <Link className='text-success' to='/signup'>Create a new account</Link></p>

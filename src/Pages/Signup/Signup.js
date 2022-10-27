@@ -6,10 +6,32 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Signup = () => {
-    const {createUser, verifyEmail} = useContext(AuthContext);
-    const [error, setError] = useState('')
+    const {createUser, verifyEmail, providerLogin} = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+    const googleProvider  = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -76,8 +98,8 @@ const Signup = () => {
 
                 <div className='text-center mt-2'>
                 <p>Or</p>
-                <Button className='w-100 mb-2' variant="outline-primary">Sign Up With Google</Button>
-                <Button className='w-100' variant="outline-secondary">SignUp With Github</Button>
+                <Button onClick={handleGoogleSignIn} className='w-100 mb-2' variant="outline-primary">Sign Up With Google</Button>
+                <Button onClick={handleGithubSignIn} className='w-100' variant="outline-secondary">SignUp With Github</Button>
                 </div>
             </Form>
             <p className='mt-3 text-center'>Already have an account? <Link className='text-success' to='/login'>Login here</Link></p>

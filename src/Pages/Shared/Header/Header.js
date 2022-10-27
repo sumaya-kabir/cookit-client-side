@@ -69,8 +69,8 @@ const Header = () => {
             ?
             <>
               
-                <h6>Hey, {user?.name}</h6>
-                <img src={user?.photoURL} alt="" />
+                <h6>Hey, {user?.displayName}</h6>
+                <img style={{height: 30, width: 30}} className='ms-2 rounded-circle' src={user?.photoURL} alt="" />
           
             </>
           : 
