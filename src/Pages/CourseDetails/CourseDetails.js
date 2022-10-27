@@ -33,8 +33,8 @@ const CourseDetails = () => {
                                     <p><FaStar className='text-warning'></FaStar>{ratings}</p>
                             </div>
                         </div>
-                        <div>
-                            <Card style={{ width: '50rem' }}>
+                        <div className='pb-5'>
+                            <Card style={{ width: '100%' }}>
                                 <Card.Img variant="top" src={picture} />
                                 <Card.Body>
                                     <Card.Text>
