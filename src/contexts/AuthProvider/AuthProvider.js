@@ -11,6 +11,7 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    console.log(user)
     
 
     const createUser = (email, password) => {
@@ -37,11 +38,11 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             
-            if(currentUser === null || currentUser.emailVerified){
+            if(currentUser.emailVerified){
                 setUser(currentUser);
             }
         
-                setLoading(false);
+            setLoading(false);
         });
         return () => {
             unsubscribe();

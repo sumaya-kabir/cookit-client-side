@@ -12,7 +12,7 @@ import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  
 
   const handleLogOut = () => {
     logOut()
@@ -68,10 +68,10 @@ const Header = () => {
             user?.uid 
             ?
             <>
-              <Navbar.Text>
-                Signed in as: <a href="#login">{user?.displayName}</a>
+              
+                <h6>Hey, {user?.name}</h6>
                 <img src={user?.photoURL} alt="" />
-              </Navbar.Text>
+          
             </>
           : 
           <FaUser></FaUser>
