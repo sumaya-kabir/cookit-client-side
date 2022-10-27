@@ -10,7 +10,7 @@ const Courses = () => {
         <div className='m-5'>
             <Container>
                 <Row>
-                    <Col className='border-top p-3' sm={3}>
+                    <Col className='border-top p-3' sm={3} md={4}>
                         <h3 className='mb-4'>Popular Courses</h3>
                         {
                             courses.map(course => <SideBar
@@ -19,7 +19,7 @@ const Courses = () => {
                             ></SideBar>)
                         }
                     </Col>
-                    <Col className='p-3' sm={9}>
+                    <Col className='p-3' sm={9} md={8}>
                         <h3 className='mb-4'>Featured Courses</h3>
                         <div className='row row-cols-md-2 row-cols-lg-3'>
 

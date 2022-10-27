@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 
 const Faq = () => {
     return (
-        <div className='m-5 p-5'>
+        <div className='m-5 p-5 border-start border-success border-3'>
             <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Why Choose Us?</Accordion.Header>
