@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -41,7 +41,9 @@ const CourseDetails = () => {
                                         {description}
 
                                     </Card.Text>
-                                    <Button variant="success">Get Premium Access</Button>
+                                    <Link className='text-decoration-none' to='/checkout'>
+                                        <Button variant="success">Get Premium Access</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -49,7 +51,9 @@ const CourseDetails = () => {
 
                     {/* Side bar of details page */}
                     <Col sm={3}>
+                    <Link className='text-decoration-none' to='/checkout'>
                         <Button className='btn-lg bg-success text-light w-100'>Enroll Course</Button>
+                    </Link>
                         <div className='mt-5'>
                             <ListGroup>
                                 <ListGroup.Item className='d-flex justify-content-between'>

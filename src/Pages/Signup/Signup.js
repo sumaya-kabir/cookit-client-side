@@ -22,12 +22,15 @@ const Signup = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            setError('');
+            form.reset();
         })
         .catch(error => {
             setError(error.message)
         })
     }
-
+    
+    
     return (
         <div className='w-50 mx-auto my-5 border rounded p-5'>
             <h3 className='text-center pb-3'>Sign Up</h3>

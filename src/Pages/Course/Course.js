@@ -10,7 +10,7 @@ const Course = ({ course }) => {
             <Card>
                 <Card.Img className='img-height img-fluid' variant="top" src={picture} />
                 <Card.Body>
-                    <Card.Title className='fs-6'><Link className='text-decoration-none text-dark'>{title}</Link></Card.Title>
+                    <Card.Title className='fs-6'><Link className='text-decoration-none text-dark' to='/checkout'>{title}</Link></Card.Title>
                 </Card.Body>
                 <Card.Footer className='d-flex justify-content-between'>
                     <small className="text-muted">{time}</small>
