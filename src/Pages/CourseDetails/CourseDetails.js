@@ -4,18 +4,38 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Col, Container, Row } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { FaBullhorn, FaBusinessTime, FaChartBar, FaDollarSign, FaEye, FaStar, FaUser, } from "react-icons/fa";
+import { FaBullhorn, FaBusinessTime, FaChartBar, FaDollarSign, FaDownload, FaEye, FaStar, FaUser, } from "react-icons/fa";
+import jsPDF from 'jspdf';
 
 
 const CourseDetails = () => {
     const details = useLoaderData();
     const { id, title, picture, description, total_students, lectures,ratings, total_views, level, instructor, price, time } = details;
+
+    const handlePdfDownload = () => {
+        const doc = new jsPDF('landscape', 'px', 'a4', false);
+        doc.addImage(picture, 'PNG', 65, 20, 500, 400)
+        doc.addPage()
+        doc.text(`
+        Course Name: ${title}
+        Instructor Name: ${instructor.name}
+        Duration: ${time}
+        Level: ${lectures}
+        Price: ${price}
+        `,60, 60)
+        
+        doc.save('details.pdf')
+    }
+
     return (
         <div className='m-5'>
             <Container>
                 <Row>
                     <Col sm={9}>
-                        <h1>{title}</h1>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <h1>{title}</h1>
+                            <FaDownload onClick={handlePdfDownload} className='text-success fs-4 me-3'></FaDownload>
+                        </div>
                         <div className='d-flex my-5 justify-content-between'>
                             <div className='d-flex w-25'>
                                 <img style={{ height: 40, width: 40 }} className='me-2 rounded-circle' src={instructor.img} alt="" />

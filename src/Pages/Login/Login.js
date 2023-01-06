@@ -9,7 +9,8 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {signIn, setLoading, providerLogin} = useContext(AuthContext);
+    const {signIn, setLoading, providerLogin, passwordReset} = useContext(AuthContext);
+    const [userEmail, setUserEmail] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -63,22 +64,40 @@ const Login = () => {
         })
     }
 
+    const handleEmailBlur = (event) => {
+        const email = event.target.value;
+        setUserEmail(email);
+        console.log(email);
+    }
+
+    const handlePasswordReset = (event) => {
+        if(!userEmail){
+            alert('Please enter your email address');
+            return;
+        }
+        passwordReset(userEmail)
+        .then(() => {
+            alert('Password Reset Email sent')
+        })
+        .catch( error => {
+            console.log("error:", error)
+        })
+    }
+
     return (
         <div className='w-50 mx-auto my-5 border rounded p-5'>
             <h3 className='text-center pb-3'>Login</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name="email" required />
+                    <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" name="email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Forgot Password" />
-                </Form.Group>
+                <button className='border-0 bg-light text-success' onClick={handlePasswordReset}>Forgot Password</button>
 
                 <p className='text-danger'>{error}</p>
 

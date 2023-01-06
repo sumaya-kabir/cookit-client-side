@@ -10,9 +10,11 @@ import { FaUser } from "react-icons/fa";
 import { useState } from 'react';
 
 
+
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [theme, setTheme] = useState("Light Theme");
+  
 
   const handleLogOut = () => {
     logOut()
@@ -61,9 +63,10 @@ const Header = () => {
                 </>
 
             }
-            <button className='rounded ms-2 text-success border-success' onClick={toggleThemebtn}>
+            {/* <button className='rounded ms-2 text-success border-success' onClick={toggleThemebtn}>
             {theme}
-            </button>
+            </button> */}
+            
           </Nav>
           
           {
