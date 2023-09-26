@@ -7,8 +7,8 @@ const HomeCourses = () => {
     
     return (
         <div className='responsive p-5 my-3 bg-success text-light'>
-            <h2 className=''>Popular Courses</h2>
-            <HomeCounter></HomeCounter>
+            <h2>Popular courses</h2>
+            <HomeCounter></HomeCounter>     
             <Expectation></Expectation>
             <HomeEvent></HomeEvent>
          </div>
