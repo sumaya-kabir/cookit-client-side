@@ -1,0 +1,22 @@
+.bg {
+    background-image: linear-gradient(to left, rgba(245, 246, 252, 0.178), #dbffcb),url('https://images.pexels.com/photos/10432861/pexels-photo-10432861.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    height: 250px;
+}
+
+.content {
+    background-color: rgba(128, 128, 128, 0.438);
+    padding: 25px;
+    margin: 0 300px;
+    border-radius: 15px;
+}
+
+@media only screen and (max-width: 1033px) {
+    .content {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 15px;
+    }
+}

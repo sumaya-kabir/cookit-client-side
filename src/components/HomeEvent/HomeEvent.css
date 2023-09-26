@@ -1,0 +1,24 @@
+.booking {
+    width: 75%;
+}
+.bg-color {
+    background-color: rgb(210, 245, 210);
+}
+.circle {
+    border: 3px solid rgb(210, 245, 210);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.square {
+    background: rgb(177, 231, 177);
+    width: 100px;
+    height: 100px;
+}
+
+@media screen and (max-width: 600px) {
+    .booking {
+        width: 100%;
+    }
+  }

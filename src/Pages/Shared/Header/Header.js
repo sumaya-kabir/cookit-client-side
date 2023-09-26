@@ -7,13 +7,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUser } from "react-icons/fa";
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [theme, setTheme] = useState("Light Theme");
+  // const [theme, setTheme] = useState("Light Theme");
   
 
   const handleLogOut = () => {
@@ -26,16 +26,16 @@ const Header = () => {
       })
   }
 
-  const toggleThemebtn = () => {
-    if (theme === "Dark-theme") {
-      setTheme("Light-theme");
-    } else {
-      setTheme("Dark-theme");
-    }
-  }
+  // const toggleThemebtn = () => {
+  //   if (theme === "Dark-theme") {
+  //     setTheme("Light-theme");
+  //   } else {
+  //     setTheme("Dark-theme");
+  //   }
+  // }
 
   return (
-    <Navbar sticky="top" className='px-3' bg="light" expand="lg">
+    <Navbar className='px-3' expand="lg">
       <Container fluid>
         <Navbar.Brand className='text-success text-center border border-success border-2 px-2 rounded'><h2>Cook It</h2></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

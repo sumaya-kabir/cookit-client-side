@@ -1,40 +1,62 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { FaAddressBook, FaEnvelope, FaFax, FaPhone } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import './Footer.css';
+
 
 const Footer = () => {
     return (
-        <div className='bg-dark text-light px-5 pt-5'>
-            <Container>
-                <Row>
-                    <Col xs={6} md={3}>
-                        <h4>About</h4>
-                        <p>
-                            We are an established learning platform with top class courses. All of our courses are taken by the professional chef who have successful experience in their career goals.
-                        </p>
-                    </Col>
-                    <Col xs={6} md={3}>
-                        <h4>Popular Courses</h4>
-                    </Col>
-                    <Col xs={6} md={3}>
-                        <h4>Pages</h4>
-                        <p><Link className='text-decoration-none text-light' to='/blog'>Blog</Link></p>
-                        <p><Link className='text-decoration-none text-light' to='/courses'>Courses</Link></p>
-                        <p><Link className='text-decoration-none text-light' to='/faq'>FAQ</Link></p>
-                        <p><Link className='text-decoration-none text-light' to='/checkout'>Checkout</Link></p>
-                    </Col>
-                    <Col xs={6} md={3}>
-                        <h4>Contact</h4>
-                        <p><FaPhone className="text-success me-2"></FaPhone> +123456789</p>
-                        <p><FaEnvelope className="text-success me-2"></FaEnvelope> cookit@email.com</p>
-                        <p><FaAddressBook className="text-success me-2"></FaAddressBook> New York City, USA</p>
-                        <p><FaFax className="text-success me-2"></FaFax> +10234056789</p>
-                    </Col>
-                    <p className='text-center pt-4'>Copyright © 2022 Cook It | Made with ❤️ by <span>Sumaya Kabir</span></p>
-                </Row>
-            </Container>
-        </div>
+        <Container className='d-flex mb-5'>
+            <Row>
+                <Col className='text-center'>
+                    <div className='d-flex'>
+                        <div className='footer-box'>
+                            <h6>ADDRESS</h6>
+                            <p>1234 Cindi St. #3000 Edmonton, Alberta</p>
+                        </div>
+                        <div style={{ backgroundColor: 'rgb(177, 231, 177)' }} className='footer-box'>
+                            <h6>PHONE</h6>
+                            <p>(222) 354-7362</p>
+                        </div>
+                    </div>
+                    <div className='d-flex'>
+                        <div className=''>
+                            <div className="follow-circle">
+                                <h6>FOLLOW</h6>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div className='footer-box bg-success text-light'>
+                            <h6>EMAIL</h6>
+                            <p>cookitofficial@gmail.com</p>
+                        </div>
+                    </div>
+                </Col>
+                <Col className='ms-5 mt-5'>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control className='input' type="text" placeholder="" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3 " controlId="formBasicEmail">
+                            <Form.Label>Emails</Form.Label>
+                            <Form.Control className='input' type="email" placeholder="" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Message</Form.Label>
+                            <Form.Control className='input' as="textarea" rows={3} />
+                        </Form.Group>
+
+                        <Button variant="dark" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
